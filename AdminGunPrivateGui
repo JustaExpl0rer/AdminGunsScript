@@ -1,0 +1,208 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Admin guns PRIVATE gui",
+   LoadingTitle = "Private ",
+   LoadingSubtitle = "by 00cx0",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "AdminGun Private gui"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("Paid Guns", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Paid Guns")
+
+local Button = MainTab:CreateButton({
+   Name = "Ultimate Heatseeker",
+   Callback = function()
+   local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "UltimateHeatseeker"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Blackhole Gun",
+   Callback = function()
+   local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "BlackholeGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Water Geyzer Gun",
+   Callback = function()
+   local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "GeyzerGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Tornado Gun",
+   Callback = function()
+   local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "TornadoGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Nuke Gun",
+   Callback = function()
+local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "NukeGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Meteor Gun",
+   Callback = function()
+local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "MeteorGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Plane Crash Gun",
+   Callback = function()
+local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "PlaneCrashGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Volcano Gun",
+   Callback = function()
+local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "VolcanoGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Gravity Gun",
+   Callback = function()
+local args = {
+    [1] = "SERVER_EQUIP_GUN",
+    [2] = "GravityGun"
+}
+
+game:GetService("ReplicatedStorage").NetworkEvents.RemoteEvent:FireServer(unpack(args))
+   end,
+})
+
+local OtherTab = Window:CreateTab("FreeGuns", nil) -- Title, Image
+local OtherSection = OtherTab:CreateSection("Free Guns")
+
+local Button = OtherTab:CreateButton({
+   Name = "Get all FreeGuns (ResetPlayer, Spawn)",
+   Callback = function()
+   local Tab = {}
+for _, v in ipairs(workspace:GetDescendants()) do
+    if v:IsA('TouchTransmitter') then
+        table.insert(Tab, v)
+    end
+end
+
+local plr = game:GetService('Players').LocalPlayer
+
+for _, v in ipairs(Tab) do
+    if v:IsA('TouchTransmitter') then
+        print('Fired!')
+        if firetouchinterest then
+            firetouchinterest(plr.Character.HumanoidRootPart, v.Parent, 0)
+            wait()
+            firetouchinterest(plr.Character.HumanoidRootPart, v.Parent, 1)
+        end
+    end
+end
+
+   end,
+})
+
+local MiscTab = Window:CreateTab("Misc", 4483362458) -- Title, Image
+local MiscSection = MiscTab:CreateSection("Misc stuff")
+
+local Slider = MiscTab:CreateSlider({
+   Name = "Walkspeed",
+   Range = {0, 250},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+
+local Slider = MiscTab:CreateSlider({
+   Name = "JumpPower",
+   Range = {0, 1000},
+   Increment = 1,
+   Suffix = "JumpPower",
+   CurrentValue =50,
+   Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+
+local Toggle = MiscTab:CreateToggle({
+   Name = "Use JumpPower?",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = (Value)
+   end,
+})
+
+local CreditTab = Window:CreateTab("Credits", 4483362458) -- Title, Image
+local CreditSection = CreditTab:CreateSection("Script made by 00cx0")
+local CreditSection = CreditTab:CreateSection("All by 00cx0 no one helped")
+local CreditSection = CreditTab:CreateSection("Im so alone")
